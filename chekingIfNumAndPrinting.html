@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body style="margin: 0;padding: 0;">
+    <div style='
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(187, 231, 245);
+        font-size: 35px;
+        text-align: center' 
+        id="root">
+    </div>
+
+    <script>
+            let div = document.querySelector("#root")
+
+            function chekingNumber(){
+                const Arguments = [...arguments]
+
+                for(let arg of Arguments){
+                    if(typeof arg === 'number' && arg > 0){
+                       div.textContent += arg + ' '
+                       
+                    } 
+                }
+            }
+
+            chekingNumber(3,6,8,-5)
+    </script>
+</body>
+
+</html>

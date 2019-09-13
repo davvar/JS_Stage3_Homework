@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+
+        function argLengthChecker() {
+            let newArguments = [...arguments];
+
+            // Tarberak 1
+
+            if (newArguments.every(arg => typeof arg === 'string'))
+                return newArguments.sort((a, b) => b.length - a.length)[0]
+
+            throw new Error('Please enter a valid name of the countrie')
+
+            // Tarberak 2
+
+            // let theLongest = '';
+            // let theLongestLength = 0;
+
+            // for (let arg of newArguments) {
+            //     if (typeof arg === 'string' && arg.length > theLongestLength) {
+            //         theLongest = arg;
+            //         theLongestLength = arg.length;
+            //         return theLongest
+            //     } else {
+            //         return 'Please write a valid name'
+            //     }
+            // }
+        }
+
+        console.log(argLengthChecker('Great Britain', 'United States of America', 'San Marino', 'Armenia'));
+
+
+
+    </script>
+</body>
+
+</html>
