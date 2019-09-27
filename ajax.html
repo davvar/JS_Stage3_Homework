@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        button {
+            background: rgb(87, 160, 219);
+            padding: 10px 15px;
+            border: 1px solid rgb(87, 160, 219);
+            border-radius: 2px;
+            color: white;
+            font-weight: bold;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<div class="container">
+    <h1>JSON and AJAX</h1>
+    <button>Fetch info from server</button>
+</div>
+<div class="textPlace"></div>
+
+<body>
+    <script>
+        let textPlace = document.querySelector(".textPlace")
+        const button = document.querySelector("button")
+        let i = -1
+        button.onclick = () => {
+            let myRequest = new XMLHttpRequest();
+
+            myRequest.onload = () => {
+                let myData = JSON.parse(myRequest.responseText);
+                renderHTML(myData, i);
+            }
+            i++
+
+            myRequest.open('GET', 'https://jsonplaceholder.typicode.com/posts');
+            myRequest.send()
+
+        }
+
+        let renderHTML = (data, i) => {
+            let htmlString = ''
+
+
+
+            htmlString += `<div style=background:lightblue;padding:10px;margin:15px;>
+                            <p>id: ${data[i].id}</p>
+                           <p>userId: ${data[i].userId}</p>
+                           <p>title: ${data[i].title}</p>
+                           <p>body: ${data[i].body}</p>
+                           </div>`
+
+
+            textPlace.insertAdjacentHTML('beforeend', htmlString)
+
+        }
+
+
+    </script>
+</body>
+
+</html>
